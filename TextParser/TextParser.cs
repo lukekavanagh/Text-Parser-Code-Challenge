@@ -4,10 +4,12 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using NUnit.Framework;
+
 
 namespace TextParser
 {
-    public class TextParser
+    public class TextParserTool
     {
         public string ErasePunctuation(string input)
         {
@@ -21,7 +23,7 @@ namespace TextParser
             return SentenceCount.Count();
         }
 
-        private string[] WordArray(string input)
+        public string[] NumberOfWords(string input)
         {
             return ErasePunctuation(input).Split(' '); // returns string with no punctuation, and splits each word at each occurance of whitespace.
         }
@@ -33,8 +35,7 @@ namespace TextParser
             return Longest; //Return the result of the Linq expression
         }
 
-
-        private string MostFrequentWord(string[] input)
+        public string MostFrequentWord(string[] input)
         {
             return input.GroupBy(x => x).OrderByDescending(y => y.Count()).First().Key;
         }
@@ -63,15 +64,15 @@ namespace TextParser
         public void PrintResultsToConsole(string input)
 
         {
-            TextParser textparser = new TextParser();
+            TextParserTool textparser = new TextParserTool();
 
-            var thirdLargestWord = string.Join(", ", FindThirdLongestWord(WordArray(input)).ToList());
-            var CountOfThirdWordChars = FindThirdLongestWord(WordArray(input)).Key;
+            var thirdLargestWord = string.Join(", ", FindThirdLongestWord(NumberOfWords(input)).ToList());
+            var CountOfThirdWordChars = FindThirdLongestWord(NumberOfWords(input)).Key;
 
-            Console.WriteLine("The Number of Words is {0}", textparser.WordArray(input).Length);
+            Console.WriteLine("The Number of Words is {0}", textparser.NumberOfWords(input).Length);
             Console.WriteLine("The Number of Sentences is {0}",textparser.GetSentenceCount(input));
             Console.WriteLine("The Longest Sentence is : {0}", textparser.LongestSentence(input));
-            Console.WriteLine("The Most Frequent Word is : {0}", MostFrequentWord(WordArray(input)));
+            Console.WriteLine("The Most Frequent Word is : {0}", MostFrequentWord(NumberOfWords(input)));
             Console.WriteLine("The Joint Third Most Longest Words are {0}. \n The number of characters in each word is : {1}", thirdLargestWord, CountOfThirdWordChars );
             Console.ReadLine();
         }
