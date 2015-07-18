@@ -13,7 +13,7 @@ This is a Console Application that can be used in Visual Studio the usual way by
 **_OR!_**
 
 Try running this from the command line -open the folder that contains this document in the command line.
-Then, follow this path - TextParser\bin\debug
+Then, follow this path - TextParser\bin\debug,
 Then enter this : .\TextParser.exe
 
 
