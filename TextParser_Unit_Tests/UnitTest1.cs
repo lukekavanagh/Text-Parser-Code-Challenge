@@ -51,34 +51,12 @@ namespace TextParser_Unit_Tests
         public void Check_Returns_Most_Frequent_Word()
         {
 
-            string words = "Yeah man, love meat, I really enjoyed that meat feast pizza, it was a meat extravaganza";
+            string[] words = { "Yeah man, love meat, I really enjoyed that meat feast pizza, it was a meat extravaganza" };
             string expectedMostFrequentWord = "meat";
 
-            string [] frequencyOfWordSearch = textparser.MostFrequentWord(words);
+            string frequencyOfWordSearch = textparser.MostFrequentWord(words);
 
-
-
-
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-      
-        
-     
+            Assert.AreEqual(expectedMostFrequentWord, frequencyOfWordSearch);
+        }     
     }
 }
