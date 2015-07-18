@@ -12,23 +12,23 @@ namespace TextParser
         public string ErasePunctuation(string input)
         {
             return Regex.Replace(input, @"[^\w\s]", "");
-            //Regex expression removes all punctuation from the intergen text sample - we then split each word at wach whitespace
+            //Regex expression removes all punctuation from the intergen text sample.
         }
 
         public int GetSentenceCount(string input)
         {
-            List <string> SentenceCount = RemoveSentences(input); //List sentence count invokes remove sentence method
+            List <string> SentenceCount = FindSentences(input); //List sentence count invokes remove sentence method
             return SentenceCount.Count();
         }
 
         private string[] WordArray(string input)
         {
-            return ErasePunctuation(input).Split(' '); // returns string with no punctuation and no whitespace
+            return ErasePunctuation(input).Split(' '); // returns string with no punctuation, and splits each word at each occurance of whitespace.
         }
 
         public string LongestSentence(string input) //method takes string array as parameter
         {
-            List<string> sentences = RemoveSentences(input); // Invoke remove sentence method on input and store in a variable.
+            List<string> sentences = FindSentences(input); // Invoke remove sentence method on input and store in a variable.
             string Longest = sentences.OrderByDescending(x => x.Length).First(); //we take order the input in descending order by length and obtain the first value
             return Longest; //Return the result of the Linq expression
         }
@@ -45,9 +45,9 @@ namespace TextParser
             return thirdLongestWord;
         } 
 
-        public List<string> RemoveSentences(string input)
+        public List<string> FindSentences(string input)
         {
-            List<string> sentences = input.Split('!', '?', '.').ToList(); // input is split by punctuation and put into a list
+            List<string> sentences = input.Split('!', '?', '.').ToList(); // input is split by punctuation - as each punctuation symbol denotes the end of a sentence and put into a list
 
             for (int i = 0; i < sentences.Count; i++) //for loop loops through this list
             {
