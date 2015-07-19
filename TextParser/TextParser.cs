@@ -69,11 +69,15 @@ namespace TextParser
             var thirdLargestWord = string.Join(", ", FindThirdLongestWord(NumberOfWords(input)).ToList());
             var CountOfThirdWordChars = FindThirdLongestWord(NumberOfWords(input)).Key;
 
-            Console.WriteLine("The Number of Words is {0}", textparser.NumberOfWords(input).Length);
-            Console.WriteLine("The Number of Sentences is {0}",textparser.GetSentenceCount(input));
-            Console.WriteLine("The Longest Sentence is : {0}", textparser.LongestSentence(input));
-            Console.WriteLine("The Most Frequent Word is : {0}", MostFrequentWord(NumberOfWords(input)));
-            Console.WriteLine("The Joint Third Most Longest Words are {0}. \n The number of characters in each word is : {1}", thirdLargestWord, CountOfThirdWordChars );
+            Console.WriteLine("The number of words in the sample text is {0}.", textparser.NumberOfWords(input).Length);
+            Console.WriteLine("\n");
+            Console.WriteLine("The number of sentences is {0}.",textparser.GetSentenceCount(input));
+            Console.WriteLine("\n");
+            Console.WriteLine("The longest sentence is : {0}.", textparser.LongestSentence(input));
+            Console.WriteLine("\n");
+            Console.WriteLine("The most frequent word is : {0}.", MostFrequentWord(NumberOfWords(input)));
+            Console.WriteLine("\n");
+            Console.WriteLine("The joint third most longest words are {0}.\n\nThese words both have a character count of : {1}.", thirdLargestWord, CountOfThirdWordChars );
             Console.ReadLine();
         }
 
